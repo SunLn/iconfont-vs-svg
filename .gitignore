@@ -8,3 +8,9 @@ src/public/css/**/*.css
 
 src/public/css/less/_background-svg-sprite.less
 src/public/css/less/_iconfont.less
+
+src/public/iconfont/iconfont.*
+
+src/public/image/background-sprite.svg
+
+src/index.html

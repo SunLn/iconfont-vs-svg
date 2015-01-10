@@ -24,14 +24,12 @@
     "gulp-iconfont-css": "^0.0.9",
     "pngsmith": "^0.1.3",
     "gulp-plumber": "^0.6.6",
-    "gulp-svg-sprite": "^1.0.8",
-    "gulp-svg-icons": "^0.6.1"
+    "gulp-svg-spritesheet": "git://github.com/iamdarrenhall/gulp-svg-sprite",
+    "gulp-svgstore": "^4.0.1",
+    "gulp-inject": "^1.1.1"
   },
   "devDependencies": {
     "coffee-script": "^1.7.1",
-    "gulp": "^3.8.10",
-    "gulp-svg-sprite": "^1.0.9",
-    "gulp-svg-spritesheet": "git://github.com/iamdarrenhall/gulp-svg-sprite",
-    "vinyl": "^0.4.6"
+    "gulp": "^3.8.10"
   }
 }

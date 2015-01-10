@@ -9,14 +9,20 @@ minifier = require 'gulp-minifier'
 prefix = require 'gulp-autoprefixer'
 sourcemaps = require 'gulp-sourcemaps'
 spritesmith = require 'gulp.spritesmith'
-svgSpriteSheet = require 'gulp-svg-spritesheet'
-iconfont = require 'gulp-iconfont'
-iconfontCss = require 'gulp-iconfont-css'
 browserSync = require 'browser-sync'
 reload = browserSync.reload
 plumber = require 'gulp-plumber'
 
-svgSprite = require 'gulp-svg-sprite'
+# icon-font
+iconfont = require 'gulp-iconfont'
+iconfontCss = require 'gulp-iconfont-css'
+
+# svg-background
+svgSpriteSheet = require 'gulp-svg-spritesheet'
+
+# svg-symbol
+svgstore = require 'gulp-svgstore'
+inject = require 'gulp-inject'
 
 # consts
 ASSETS_PATH = 'src/public/'
@@ -29,11 +35,6 @@ browserSyncOption =
   server:
     baseDir: "./src"
   port: 3000
-
-browserSyncProdOption =
-  server:
-    baseDir: "./src"
-  port: process.env.VCAP_APP_PORT
 
 minifierOption =
   minify: true
@@ -69,14 +70,21 @@ gulp.task 'svg-bg', ->
     templateSrc: ASSETS_PATH + 'template/background-svg-less-template.tpl'
     templateDest: ASSETS_PATH + 'css/less/_background-svg-sprite.less'
   .pipe(gulp.dest ASSETS_PATH + 'image/background-sprite.svg').on 'end', ->
-    gulp.start 'svg-sprite'
+    gulp.start 'css'
 
-# svg element task
-gulp.task 'svg-sprite', ->
-  gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
-  .pipe svgSprite svgSpriteOption
-  .pipe(gulp.dest ASSETS_PATH + 'image/').on 'end', ->
-    gulp.start 'iconfont'
+# svg symbol task
+gulp.task 'svg-symbol', ->
+  fileContents = (filePath, file) ->
+    file.contents.toString()
+
+  svgs = gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
+  .pipe svgstore
+    prefix: 'icon-'
+    inlineSvg: true
+
+  gulp.src ASSETS_PATH + '*.html'
+  .pipe inject svgs, transform: fileContents
+  .pipe gulp.dest 'src/'
 
 gulp.task 'iconfont', ->
   gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
@@ -89,7 +97,7 @@ gulp.task 'iconfont', ->
     fontName: 'iconfont'
     normalize: true
   .pipe(gulp.dest ASSETS_PATH + 'iconfont/').on 'end', ->
-    gulp.start 'css'
+    gulp.start 'svg-bg'
 
 # browser sync task
 gulp.task 'browser-sync', ->
@@ -99,7 +107,4 @@ gulp.task 'browser-sync', ->
 gulp.task 'watch', ['browser-sync'], ->
   gulp.watch ASSETS_PATH + 'css/less/**/*.less', ['css']
 
-gulp.task 'prod', ->
-  browserSync browserSyncProdOption
-
-gulp.task 'default', ['svg-bg']
+gulp.task 'default', ['iconfont', 'svg-symbol']
