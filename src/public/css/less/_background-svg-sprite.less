@@ -1,0 +1,23 @@
+.sprite {
+    font-size: 1em;
+    display: inline-block;
+}
+
+.sprite:before {
+    content: ' ';
+    background-image: url("../image/background-sprite.svg");
+    background-repeat: no-repeat;
+    background-size: 35px 71px;
+    display: inline-block;
+}
+
+.sprite__wp:before {
+    background-position: 0px 0px;
+    width: 35px;
+    height: 36px;
+}
+.sprite__android:before {
+    background-position: 0px -36px;
+    width: 30px;
+    height: 35px;
+}
