@@ -6,11 +6,11 @@ src/public/js/**/*.js
 src/public/js/**/*.map
 src/public/css/**/*.css
 
-src/public/css/less/_background-svg-sprite.less
+src/public/css/less/_background-svg.less
 src/public/css/less/_iconfont.less
 
 src/public/iconfont/iconfont.*
 
-src/public/image/background-sprite.svg
+src/public/image/background-svg.svg
 
 src/index.html
