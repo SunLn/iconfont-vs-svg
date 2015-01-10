@@ -1,1 +1,1 @@
-#bangmang.in
+It's a demo showing the different between icon font and svg

@@ -1,14 +1,10 @@
 # requires
 gulp = require 'gulp'
-gutil = require 'gulp-util'
 path = require 'path'
 less = require 'gulp-less'
-coffee = require 'gulp-coffee'
 concat = require 'gulp-concat'
 minifier = require 'gulp-minifier'
 prefix = require 'gulp-autoprefixer'
-sourcemaps = require 'gulp-sourcemaps'
-spritesmith = require 'gulp.spritesmith'
 browserSync = require 'browser-sync'
 reload = browserSync.reload
 plumber = require 'gulp-plumber'
@@ -55,6 +51,7 @@ gulp.task 'less', ->
     .pipe prefix("last 20 version", "> 1%", "ie 8", "ie 7")
     .pipe gulp.dest ASSETS_PATH + 'css/'
 
+# css task
 gulp.task 'css', ['less'], ->
   gulp.src ASSETS_PATH + 'css/global.css'
     .pipe concat('global.min.css', {newLine: '\n'})
@@ -86,6 +83,7 @@ gulp.task 'svg-symbol', ->
   .pipe inject svgs, transform: fileContents
   .pipe gulp.dest 'src/'
 
+# icon font task
 gulp.task 'iconfont', ->
   gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
   .pipe iconfontCss
