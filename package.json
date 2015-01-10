@@ -24,7 +24,8 @@
     "gulp-plumber": "^0.6.6",
     "gulp-svg-spritesheet": "git://github.com/iamdarrenhall/gulp-svg-sprite",
     "gulp-svgstore": "^4.0.1",
-    "gulp-inject": "^1.1.1"
+    "gulp-inject": "^1.1.1",
+    "gulp-svgmin": "^1.0.0"
   },
   "devDependencies": {
     "coffee-script": "^1.7.1",

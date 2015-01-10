@@ -19,6 +19,7 @@ svgSpriteSheet = require 'gulp-svg-spritesheet'
 # svg-symbol
 svgstore = require 'gulp-svgstore'
 inject = require 'gulp-inject'
+svgmin = require 'gulp-svgmin'
 
 # consts
 ASSETS_PATH = 'src/public/'
@@ -59,14 +60,15 @@ gulp.task 'css', ['less'], ->
     .pipe gulp.dest ASSETS_PATH + 'css/'
     .pipe reload {stream:true}
 
-# svg font task
-gulp.task 'svg-bg', ->
+# svg backgrond task
+gulp.task 'svg-background', ->
   gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
+  .pipe svgmin()
   .pipe svgSpriteSheet
-    cssPathSvg: '../image/background-sprite.svg'
+    cssPathSvg: '../image/background-svg.svg'
     templateSrc: ASSETS_PATH + 'template/background-svg-less-template.tpl'
-    templateDest: ASSETS_PATH + 'css/less/_background-svg-sprite.less'
-  .pipe(gulp.dest ASSETS_PATH + 'image/background-sprite.svg').on 'end', ->
+    templateDest: ASSETS_PATH + 'css/less/_background-svg.less'
+  .pipe(gulp.dest ASSETS_PATH + 'image/background-svg.svg').on 'end', ->
     gulp.start 'css'
 
 # svg symbol task
@@ -75,6 +77,7 @@ gulp.task 'svg-symbol', ->
     file.contents.toString()
 
   svgs = gulp.src ASSETS_PATH + 'image/svg-icon/*.svg'
+  .pipe svgmin()
   .pipe svgstore
     prefix: 'icon-'
     inlineSvg: true
@@ -95,7 +98,7 @@ gulp.task 'iconfont', ->
     fontName: 'iconfont'
     normalize: true
   .pipe(gulp.dest ASSETS_PATH + 'iconfont/').on 'end', ->
-    gulp.start 'svg-bg'
+    gulp.start 'svg-background'
 
 # browser sync task
 gulp.task 'browser-sync', ->
