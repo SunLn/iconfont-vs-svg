@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="wp" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="595.281px" height="841.891px" viewBox="0 0 595.281 841.891" enable-background="new 0 0 595.281 841.891"
-	 xml:space="preserve">
+	 viewBox="0 0 35 35.5" enable-background="new 0 0 35 35.5" xml:space="preserve">
 <g>
-	<polygon fill="#B73939" points="250.018,409.89 250.018,166.675 0,202.392 0,409.89 	"/>
-	<polygon fill="#70B53A" points="270.427,409.89 595.281,409.89 595.281,119.053 270.427,164.975 	"/>
-	<polygon fill="#258AD6" points="250.018,432 0,432 0,639.498 250.018,675.215 	"/>
-	<polygon fill="#EAC736" points="270.427,432 270.427,676.916 595.281,722.837 595.281,432 	"/>
+	<polygon fill="#C43D3D" points="14.7,17.1 14.7,2.8 0,4.9 0,17.1 	"/>
+	<polygon fill="#70B53A" points="15.9,17.1 35,17.1 35,0 15.9,2.7 	"/>
+	<polygon fill="#258AD6" points="14.7,18.4 0,18.4 0,30.6 14.7,32.7 	"/>
+	<polygon fill="#EAC736" points="15.9,18.4 15.9,32.8 35,35.5 35,18.4 	"/>
 </g>
 </svg>
